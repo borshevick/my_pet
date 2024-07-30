@@ -1,0 +1,73 @@
+{
+    "coins": 17,
+    "food": 0,
+    "happines": 49,
+    "health": 0,
+    "clothes": [
+        {
+            "price": 30,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 35,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 40,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 45,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 50,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 55,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 60,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 65,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 70,
+            "buy": false,
+            "wear": false
+        },
+        {
+            "price": 75,
+            "buy": false,
+            "wear": false
+        }
+    ],
+    "bonus": {
+        "100": [
+            false,
+            2
+        ],
+        "500": [
+            false,
+            3
+        ],
+        "1000": [
+            false,
+            5
+        ]
+    },
+    "click": 1
+}
