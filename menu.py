@@ -45,6 +45,7 @@ class Menu():
     def ft(self, event_object):
         pass
 
+
 class MenuFood(Menu):
     def __init__(self, picture, game):
         super().__init__(picture, game)
@@ -70,7 +71,6 @@ class MenuFood(Menu):
         self.index = 0
 
     def eat(self):
-        
         if self.food_obects[self.index].price <= self.game.coins.counter:
             self.game.coins.counter = self.game.coins.counter - self.food_obects[self.index].price
             if self.index == len(self.food_obects) - 1:
@@ -81,7 +81,6 @@ class MenuFood(Menu):
             if self.game.food.counter > 100:
                 self.game.food.counter = 100
             
-
     def food_select_left(self):
         if self.index == 0:
             self.index = len(self.food_obects)-1
@@ -99,6 +98,8 @@ class MenuFood(Menu):
         self.food_obects[self.index].print(self.game.window)
         self.text_font.render_to(self.game.window, [450, 220], str(self.food_obects[self.index].price))
         self.text_font.render_to(self.game.window, [450, 200], str(self.list_food_names[self.index][0:-4]))
+
+
 class MenuClothes(Menu):
     def __init__(self, picture, game):
         super().__init__(picture, game)
@@ -148,7 +149,7 @@ class MenuClothes(Menu):
     def wear_clothes(self):
         object = self.clothing_obects[self.index]
         if object.buy == True and object.wear == False:
-             object.wear = True
+            object.wear = True
 
         elif object.buy == True and object.wear == True:
             object.wear = False
@@ -174,6 +175,7 @@ class MenuClothes(Menu):
             slovar_list.append(r)
         return slovar_list
 
+
 class MenuMinigame(Menu):
     def __init__(self, picture, game):
         super().__init__(picture, game)
@@ -182,9 +184,14 @@ class MenuMinigame(Menu):
         pg.time.set_timer(self.toy_event, 2000)
         self.list_toys = []
         self.score = 0
+        self.text_font = pgtype.Font("images/Acumin-ItPro_RUS.ttf", 20)
+        self.record = self.game.file_read["record"]
+
     def draw(self):
         super().draw()
         self.dog.print(self.game.window)
+        self.text_font.render_to(self.game.window, [125, 100],"Score: " + str(self.score), [0, 0, 0])
+        self.text_font.render_to(self.game.window, [525, 100],"Record: " + str(self.record), [0, 0, 0])
         for i in self.list_toys:
             i.print(self.game.window)
 
@@ -199,6 +206,10 @@ class MenuMinigame(Menu):
                 self.list_toys.remove(i)
                 if self.game.happiness.counter < 100:
                     self.game.happiness.counter = self.game.happiness.counter + 1
+                if self.score > self.record:
+                    self.record = self.score
+            if i.hitbox2.bottom >= 600:
+                self.score = 0
 
         for i in self.list_toys:
             if i.hitbox2.bottom >= 650:
@@ -209,3 +220,4 @@ class MenuMinigame(Menu):
         if event.type == self.toy_event:
             toy_object = classes.Toys()
             self.list_toys.append(toy_object)
+

@@ -1,73 +1,23 @@
 {
-    "coins": 17,
-    "food": 0,
-    "happines": 49,
-    "health": 0,
-    "clothes": [
-        {
-            "price": 30,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 35,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 40,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 45,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 50,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 55,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 60,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 65,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 70,
-            "buy": false,
-            "wear": false
-        },
-        {
-            "price": 75,
-            "buy": false,
-            "wear": false
-        }
+    "happines" : 100,
+    "coins" : 0,
+    "food" : 100,
+    "health" : 100,
+
+    "clothes" : [
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false},
+        {"price": 20, "buy": false, "wear": false}
     ],
-    "bonus": {
-        "100": [
-            false,
-            2
-        ],
-        "500": [
-            false,
-            3
-        ],
-        "1000": [
-            false,
-            5
-        ]
-    },
-    "click": 1
+    
+    "bonus" : {"100" : [false, 2], "500" : [false, 3], "1000" : [false, 5]},
+    "click" : 1,
+    "all_time": 0, "all_clicks": 0, "record": 0
 }

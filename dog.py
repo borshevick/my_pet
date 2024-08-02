@@ -7,7 +7,6 @@ class Dog():
         self.picture = pg.transform.scale(self.picture, size)
         self.hitbox = pg.rect.Rect(xy, self.picture.get_size())
         
-
     def print(self, window):
         window.blit(self.picture, self.hitbox)
         # pg.draw.rect(window, [255, 255, 255], self.hitbox)

@@ -18,5 +18,6 @@
     ],
     
     "bonus" : {"100" : [false, 2], "500" : [false, 3], "1000" : [false, 5]},
-    "click" : 1
+    "click" : 1,
+    "all_time": 0, "all_clicks": 0, "record": 0
 }

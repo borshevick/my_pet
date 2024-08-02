@@ -56,6 +56,10 @@ class Game():
         pg.time.set_timer(self.health_event, random.randint(1000, 3000))
         self.auto_clicker_event = pg.USEREVENT + 4
         pg.time.set_timer(self.auto_clicker_event, 5000)
+        self.timer = pg.USEREVENT + 5
+        pg.time.set_timer(self.timer, 1000)
+        self.all_clicks = self.file_read["all_clicks"]
+        self.all_time = self.file_read["all_time"]
 
     def menufood(self):
         print('food')
@@ -95,10 +99,11 @@ class Game():
     def event(self):
         for event in pg.event.get():
             if event.type == pg.QUIT:
-                file = open("saves.json", "w")
-                slovar = {"coins": self.coins.counter, "food": self.food.counter, "happines": self.happiness.counter, "health": self.health.counter, "clothes": self.menuclothesobject.slovari(), "bonus": self.bonus, "click": self.click}
-                json.dump(slovar, file, indent=4)
-                file.close()
+                if self.game_over == False:
+                    file = open("saves.json", "w")
+                    slovar = {"coins": self.coins.counter, "food": self.food.counter, "happines": self.happiness.counter, "health": self.health.counter, "clothes": self.menuclothesobject.slovari(), "bonus": self.bonus, "click": self.click, "all_time": self.all_time, "all_clicks": self.all_clicks, "record": self.menugameobject.record}
+                    json.dump(slovar, file, indent=4)
+                    file.close()
                 pg.quit()
                 exit()
             if self.game_over == False:
@@ -120,9 +125,15 @@ class Game():
                     self.health.counter = self.health.counter + 1
                 if event.type == self.auto_clicker_event:
                     self.coins.counter = self.coins.counter + self.click
+                if event.type == self.timer:
+                    self.all_time = self.all_time + 1
                 if self.food.counter <= 0:
                     self.game_over = True
                     self.health.counter = 0
+                    file = open("saves.json", "w")
+                    slovar = {"coins": self.coins.counter, "food": self.food.counter, "happines": self.happiness.counter, "health": self.health.counter, "clothes": self.menuclothesobject.slovari(), "bonus": self.bonus, "click": self.click, "all_time": self.all_time, "all_clicks": self.all_clicks, "record": self.menugameobject.record}
+                    json.dump(slovar, file, indent=4)
+                    file.close()
             if self.game_over == True:
                 if event.type == pg.KEYDOWN:
                     if event.key == pg.K_r:
@@ -149,10 +160,12 @@ class Game():
                 i.print(self.window)
         if self.game_over == True:
             self.text_font.render_to(self.window, [500, 350], "GAME OVER, PRESS 'R' TO RESTART")
+            self.text_font.render_to(self.window, [500, 365], "All clicks: "+str(self.file_read["all_clicks"]))
+            self.text_font.render_to(self.window, [500, 380], "All play time: "+str(self.file_read["all_time"]))
+            self.text_font.render_to(self.window, [500, 395], "Minigame record: "+str(self.file_read["record"]))
         for i in self.bonus:
             if self.bonus[i][0] == False:
                 self.text_font.render_to(self.window, [self.click_button.txt_hitbox.right + 10, self.click_button.txt_hitbox.y], str(i))
                 break
-
 Mypet = Game()
 Mypet.run()
